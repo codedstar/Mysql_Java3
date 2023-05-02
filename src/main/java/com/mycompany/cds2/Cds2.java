@@ -33,8 +33,8 @@ public class Cds2 {
             
 //            System.out.println(adminGenre.readGenreAll());
             
-        Scanner sc = new Scanner(System.in);
-        System.out.println();
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println();
                 
                 
                 

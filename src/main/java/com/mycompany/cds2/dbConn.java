@@ -15,21 +15,23 @@ import java.sql.SQLException;
 public class dbConn {
     
     Connection conn;
-    private String url;
-    private String username;
-    private String password;
     
 //    public dbConn( String url,String username,String password){
-    public dbConn(){
-        this.url = "jdbc:mysql://localhost:3306/music";
-        this.username = "root";
-        this.password = "root1234#";
-    }
+//    public dbConn(){
+//        this.url = "jdbc:mysql://localhost:3306/music";
+//        this.username = "";
+//        this.password = "";
+//    }
+    
+//    create a class - env and add variables
+//    final static String url = "db url";
+//    final static String username = "db user";
+//    final static String password = "db pass";
     
     public Connection connect(){
 
         try{
-            conn = DriverManager.getConnection(url,username,password);
+            conn = DriverManager.getConnection(env.url,env.username,env.password);
 //            return "connection successful";
             
         }catch(SQLException exception){

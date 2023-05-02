@@ -10,4 +10,8 @@ package com.mycompany.cds2;
  */
 public class env {
     
+    final static String url = "jdbc:mysql://localhost:3306/music";
+    final static String username = "root";
+    final static String password = "root1234#";
+    
 }
