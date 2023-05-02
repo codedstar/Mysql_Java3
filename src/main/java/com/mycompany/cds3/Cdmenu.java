@@ -30,7 +30,7 @@ public class Cdmenu {
 
             switch (option) {
 
-                case 1: {
+                case 1 ->  {
                     // Insert Genre method here...
                     // System.out.println("Insert Genre method here...");
                     System.out.println("Input Genre name");
@@ -50,10 +50,9 @@ public class Cdmenu {
                     System.out.println();
                     System.out.println(adminGenre.readGenreAll());
                     System.out.println();
-                    break;
                 }
 
-                case 2: {
+                case 2 ->  {
                     // Update Genre method here...
                     // System.out.println("Update Genre method here...");
                     System.out.println(adminGenre.readGenreAll());
@@ -68,10 +67,9 @@ public class Cdmenu {
                     Genre genre1 = new Genre(genreId, genreName);
                     adminGenre.updateGenre(genre1.getName(), genre1.getID());
                     System.out.println(adminGenre.readGenreAll());
-                    break;
                 }
 
-                case 3: {
+                case 3 ->  {
                     // Delete Genre method here...
                     // System.out.println("Delete Genre method here...");
                     System.out.println(adminGenre.readGenreAll());
@@ -81,20 +79,18 @@ public class Cdmenu {
                     genre.setID(genreId);
                     adminGenre.deleteGenre(genre.getID());
                     System.out.println(adminGenre.readGenreAll());
-                    break;
                 }
 
-                case 4:
-                    // Get All Genre method here...
+                case 4 -> // Get All Genre method here...
                     // System.out.println("Get All Genre method here...");
 
                     System.out.println(adminGenre.readGenreAll());
-                    break;
 
-                default:
+                default -> {
                     // close connection and exit
                     System.out.println("Exit");
                     return;
+                }
             }
         } while (option != 0);
 

@@ -12,6 +12,6 @@ public class env {
     
     final static String url = "jdbc:mysql://localhost:3306/music";
     final static String username = "root";
-    final static String password = "root";
+    final static String password = "root1234#";
     
 }

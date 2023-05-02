@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.sql.Connection;
 
 /**
  *
@@ -21,14 +22,15 @@ import java.util.ArrayList;
 
 public class AdminGenre {
     
-    dbConn conn = new dbConn();
+    dbConn dbObject = new dbConn();
+    Connection conn = dbObject.connect();
     PreparedStatement pStmt;
    
     public void insertGenre(String genreName){
         try{
             // PreparedStatement way
             String query = "INSERT INTO genre(name) VALUES(?)";
-            pStmt = conn.connect().prepareStatement(query);
+            pStmt = conn.prepareStatement(query);
             pStmt.setString(1, genreName);
 
 //            int pStmtRowsAffected = pStmt.executeUpdate();
@@ -38,10 +40,13 @@ public class AdminGenre {
         }catch(SQLException exception){
 //             return "Error" + exception.getMessage();
             throw new Error(exception);
+//        }finally {
+//            try { rs.close(); } catch (Exception e) { /* Ignored */ }
+//            try { pStmt.close(); } catch (SQLException e) { throw new Error(e); }
+//            try { conn.connect().close(); } catch (SQLException e) { throw new Error(e);}
         }finally {
 //            try { rs.close(); } catch (Exception e) { /* Ignored */ }
             try { pStmt.close(); } catch (SQLException e) { throw new Error(e); }
-            try { conn.connect().close(); } catch (SQLException e) { throw new Error(e);}
         }
 
     }
@@ -79,8 +84,8 @@ public class AdminGenre {
     public ArrayList<Genre> readGenreAll(){
         try{
             // PreparedStatement way
-            String query = "SELECT * FROM genre ";
-            pStmt = conn.connect().prepareStatement(query);
+            String query = "SELECT * FROM genre";
+            pStmt = conn.prepareStatement(query);
 //            pStmt.setInt(1, id);
             
             ResultSet rs;            
@@ -91,7 +96,8 @@ public class AdminGenre {
                
            ArrayList<Genre> genreList = new ArrayList<>();
            while (rs.next()) {
-               Genre genre = new Genre(rs.getInt("id"), rs.getString("name") );
+//               Genre genre = new Genre(rs.getInt("id"), rs.getString("name") );
+               Genre genre = new Genre(rs.getInt(1), rs.getString(2) );
                genreList.add(genre);
            }
            return genreList;
@@ -110,7 +116,6 @@ public class AdminGenre {
         }finally {
 //            try { rs.close(); } catch (Exception e) { /* Ignored */ }
             try { pStmt.close(); } catch (SQLException e) { throw new Error(e); }
-            try { conn.connect().close(); } catch (SQLException e) { throw new Error(e);}
         }
     }
     
@@ -118,7 +123,7 @@ public class AdminGenre {
         try{
             // PreparedStatement way
             String query = "UPDATE `music`.`genre` SET `name` = ? WHERE (`id_genre` = ?)";
-            pStmt = conn.connect().prepareStatement(query);
+            pStmt = conn.prepareStatement(query);
             pStmt.setString(1, genreName);
             pStmt.setInt(2, id);
 
@@ -132,7 +137,6 @@ public class AdminGenre {
         }finally {
 //            try { rs.close(); } catch (Exception e) { /* Ignored */ }
             try { pStmt.close(); } catch (SQLException e) { throw new Error(e); }
-            try { conn.connect().close(); } catch (SQLException e) { throw new Error(e);}
         }
     }
         
@@ -140,7 +144,7 @@ public class AdminGenre {
         try{
             // PreparedStatement way
             String query = "DELETE FROM `music`.`genre` WHERE (`id_genre` = ?)";
-            pStmt = conn.connect().prepareStatement(query);
+            pStmt = conn.prepareStatement(query);
             pStmt.setInt(1, id);
             pStmt.executeUpdate();
 //            return rowsDeleted + " row(s) deleted successfully.";
@@ -151,7 +155,12 @@ public class AdminGenre {
         }finally {
 //            try { rs.close(); } catch (Exception e) { /* Ignored */ }
             try { pStmt.close(); } catch (SQLException e) { throw new Error(e); }
-            try { conn.connect().close(); } catch (SQLException e) { throw new Error(e);}
         }
+        
     }
+    
+     public void dbClose(){
+        try { conn.close(); } catch (SQLException e) { throw new Error(e);}
+    }
+    
 }
