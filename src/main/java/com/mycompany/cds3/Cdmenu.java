@@ -39,7 +39,15 @@ public class Cdmenu {
                     input.nextLine();
                     String genreName = input.nextLine();
                     genre.setName(genreName);
-                    System.out.println(adminGenre.insertGenre(genre.getName()));
+                    try{
+                        adminGenre.insertGenre(genre.getName());
+                        System.out.println(genreName + " inserted.");
+                    }
+                    catch(Error e){
+                        System.out.println("Error" + e.getMessage());
+                    }
+                 
+                    System.out.println();
                     System.out.println(adminGenre.readGenreAll());
                     System.out.println();
                     break;
@@ -58,7 +66,7 @@ public class Cdmenu {
                     input.nextLine();
                     String genreName = input.nextLine();
                     Genre genre1 = new Genre(genreId, genreName);
-                    System.out.println(adminGenre.updateGenre(genre1.getName(), genre1.getID()));
+                    adminGenre.updateGenre(genre1.getName(), genre1.getID());
                     System.out.println(adminGenre.readGenreAll());
                     break;
                 }
@@ -71,7 +79,7 @@ public class Cdmenu {
 
                     int genreId = input.nextInt();
                     genre.setID(genreId);
-                    System.out.println(adminGenre.deleteGenre(genre.getID()));
+                    adminGenre.deleteGenre(genre.getID());
                     System.out.println(adminGenre.readGenreAll());
                     break;
                 }
