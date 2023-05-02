@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `music` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `music`;
 -- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: music
@@ -26,7 +28,7 @@ CREATE TABLE `album` (
   `id_album` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `artist_id` int DEFAULT NULL,
-  `year` int DEFAULT NULL,
+  `year` year DEFAULT NULL,
   `genre_id` int DEFAULT NULL,
   `bought` date DEFAULT NULL,
   PRIMARY KEY (`id_album`),
@@ -36,16 +38,6 @@ CREATE TABLE `album` (
   CONSTRAINT `fk_genre` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id_genre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `album`
---
-
-LOCK TABLES `album` WRITE;
-/*!40000 ALTER TABLE `album` DISABLE KEYS */;
-INSERT INTO `album` VALUES (1,'Burn it up',1,2023,1,'2021-12-31'),(2,'Dreamer',2,2024,2,'2022-01-05'),(3,'Born to do it',3,2020,3,'2023-12-31'),(4,'Close to you',4,2010,4,'2021-11-03'),(5,'My hero',2,2015,5,'2021-02-01'),(6,'My Life',4,2010,1,'2010-12-31'),(7,'My love',1,2010,1,'2010-02-03'),(8,'too close',3,2012,5,'2021-12-31');
-/*!40000 ALTER TABLE `album` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `artist`
@@ -65,16 +57,6 @@ CREATE TABLE `artist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `artist`
---
-
-LOCK TABLES `artist` WRITE;
-/*!40000 ALTER TABLE `artist` DISABLE KEYS */;
-INSERT INTO `artist` VALUES (1,'David Guetta',1),(2,'Beyonce',2),(3,'Sarkodie',3),(4,'Andrea Bocelli',4),(5,'Mark Henry',4),(6,'Joe Bidden',5);
-/*!40000 ALTER TABLE `artist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `artist_album`
 --
 
@@ -92,16 +74,6 @@ CREATE TABLE `artist_album` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `artist_album`
---
-
-LOCK TABLES `artist_album` WRITE;
-/*!40000 ALTER TABLE `artist_album` DISABLE KEYS */;
-INSERT INTO `artist_album` VALUES (1,1),(1,2),(2,2),(3,4),(5,4);
-/*!40000 ALTER TABLE `artist_album` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `genre`
 --
 
@@ -112,18 +84,8 @@ CREATE TABLE `genre` (
   `id_genre` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `genre`
---
-
-LOCK TABLES `genre` WRITE;
-/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
-INSERT INTO `genre` VALUES (1,'Hip Life'),(2,'Hip Hop'),(3,'Pop'),(4,'Rock'),(5,'Reggae');
-/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `invoice`
@@ -143,16 +105,6 @@ CREATE TABLE `invoice` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `invoice`
---
-
-LOCK TABLES `invoice` WRITE;
-/*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
-INSERT INTO `invoice` VALUES (1,'Jones Smith',1),(2,'Jennifer Confidence',2),(3,'Jackie Chan',3),(4,'Brad Pitt',4),(5,'Naa Adjetey',7),(6,'Nana Ado',6);
-/*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `label`
 --
 
@@ -170,16 +122,6 @@ CREATE TABLE `label` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `label`
---
-
-LOCK TABLES `label` WRITE;
-/*!40000 ALTER TABLE `label` DISABLE KEYS */;
-INSERT INTO `label` VALUES (1,'Sony',1),(2,'Sony',2),(3,'Dreamworks',3),(4,'Universal',4);
-/*!40000 ALTER TABLE `label` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `language`
 --
 
@@ -192,16 +134,6 @@ CREATE TABLE `language` (
   PRIMARY KEY (`id_language`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `language`
---
-
-LOCK TABLES `language` WRITE;
-/*!40000 ALTER TABLE `language` DISABLE KEYS */;
-INSERT INTO `language` VALUES (1,'French'),(2,'English'),(3,'Twi'),(4,'Italian'),(5,'Spanish'),(6,'Portugese');
-/*!40000 ALTER TABLE `language` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -212,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-24 12:25:42
+-- Dump completed on 2023-05-02 20:02:27
