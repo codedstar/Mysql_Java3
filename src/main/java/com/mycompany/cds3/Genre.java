@@ -9,29 +9,31 @@ package com.mycompany.cds3;
  * @author kwaku
  */
 public class Genre {
+
     private int id;
     private String name;
-    
-    public Genre(){}
-    
-    public Genre(int id, String name){
+
+    public Genre() {
+    }
+
+    public Genre(int id, String name) {
         this.id = id;
         this.name = name;
     }
-    
-    public void setID(int id){
+
+    public void setID(int id) {
         this.id = id;
     }
-    
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    
-    public int getID(){
+
+    public int getID() {
         return id;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 }
