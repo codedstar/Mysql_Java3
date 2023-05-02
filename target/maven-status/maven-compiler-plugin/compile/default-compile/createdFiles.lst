@@ -2,5 +2,4 @@ com\mycompany\cds3\env.class
 com\mycompany\cds3\Genre.class
 com\mycompany\cds3\AdminGenre.class
 com\mycompany\cds3\Cdmenu.class
-com\mycompany\cds3\Cds2.class
 com\mycompany\cds3\dbConn.class
